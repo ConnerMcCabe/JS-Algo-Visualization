@@ -1,0 +1,22 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+h1 {
+  font-size: 10vmin;
+  align-content: center;
+  justify-content: center;
+}
+input {
+  border-color: grey;
+  height: 10vmin;
+  padding: 10px;
+}
+button {
+  background-color: grey;
+  padding: 10px;
+}
