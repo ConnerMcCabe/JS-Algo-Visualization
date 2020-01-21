@@ -6,17 +6,23 @@ body {
   align-items: center;
   margin: 20px;
 }
-h1 {
+h1, span {
+  display: flex;
   font-size: 10vmin;
   align-content: center;
   justify-content: center;
 }
 input {
   border-color: grey;
-  height: 10vmin;
+  height: 7vmin;
+  font-size: 5vmin;
   padding: 10px;
 }
 button {
   background-color: grey;
+  font-size: 5vmin;
+  height: 10vmin;
+  width: 10vmin;
   padding: 10px;
+
 }

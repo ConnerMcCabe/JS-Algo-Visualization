@@ -4,7 +4,7 @@
 
 let sum;
 
-let displayEl = document.querySelector('h1 span');
+let displayEl = document.querySelector('h1');
 let input = document.getElementById('numba');
 
 document.getElementById('add').addEventListener('click', function() {
