@@ -17,5 +17,13 @@ document.getElementById('subtract').addEventListener('click', function() {
   render();
 });
 
+function init() {
+  sum = 0;
+  render();
+}
 
+function render() {
+  displayEl.textContent = sum;
+};
 
+init();
