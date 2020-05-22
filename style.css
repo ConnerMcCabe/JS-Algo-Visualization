@@ -17,6 +17,7 @@ input {
   height: 7vmin;
   font-size: 5vmin;
   padding: 10px;
+  text-align: center;
 }
 button {
   background-color: grey;
