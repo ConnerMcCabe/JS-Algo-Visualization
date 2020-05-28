@@ -67,13 +67,13 @@ timerId = setInterval(moveDown, 500)
 
 //key control
 function control(e) {
-  if(e.keycode === 37){
-    moveLeft
-  } else if (e.keycode === 38) {
-
-  }  else if (e.keycode === 39) {
+  if(e.keyCode === 37){
+    moveLeft()
+  } else if (e.keyCode === 38) {
+    rotate()
+  }  else if (e.keyCode === 39) {
     moveRight()
-  }  else if (e.keycode === 40) {
+  }  else if (e.keyCode === 40) {
     moveDown()
   }
 }
@@ -114,4 +114,14 @@ function moveRight() {
     currentPosition -= 1
   }
     draw()
+}
+
+function rotate() {
+  undraw()
+  currentRotation ++
+  if(currentRotation === current.length) {
+    currentRotation = 0
+  }
+  current = tetrominoes[random][currentRotation]
+  draw()
 }
