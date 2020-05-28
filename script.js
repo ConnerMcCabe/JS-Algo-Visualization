@@ -64,6 +64,21 @@ function undraw() {
 }
 //the falling tetro interval
 timerId = setInterval(moveDown, 500)
+
+//key control
+function control(e) {
+  if(e.keycode === 37){
+    moveLeft
+  } else if (e.keycode === 38) {
+
+  }  else if (e.keycode === 39) {
+    moveRight()
+  }  else if (e.keycode === 40) {
+    moveDown()
+  }
+}
+document.addEventListener('keyup', control)
+
 function moveDown() {
   undraw()
   currentPosition += width 
@@ -79,4 +94,24 @@ function freeze() {
     currentPosition = 4
     draw()
   }
+}
+
+function moveLeft() {
+  undraw()
+  const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
+  if(!isAtLeftEdge) currentPosition -= 1
+  if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+    currentPosition += 1
+  }
+    draw()
+}
+
+function moveRight() {
+  undraw()
+  const isAtRightEdge = current.some(index => (currentPosition + index) % width === -1)
+  if(!isAtRightEdge) currentPosition += 1
+  if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+    currentPosition -= 1
+  }
+    draw()
 }
