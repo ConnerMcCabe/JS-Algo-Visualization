@@ -59,6 +59,24 @@ function draw() {
 //undraw the tetro
 function undraw() {
   current.forEach(index => {
-    squares[currentPosition + index].classList.add('tetromino')
+    squares[currentPosition + index].classList.remove('tetromino')
   })
+}
+//the falling tetro interval
+timerId = setInterval(moveDown, 500)
+function moveDown() {
+  undraw()
+  currentPosition += width 
+  draw()
+  freeze()
+}
+//freeze the bottom
+function freeze() {
+  if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+    current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+    random = Math.floor(Math.random() * tetrominoes.length)
+    current = tetrominoes[random][currentRotation]
+    currentPosition = 4
+    draw()
+  }
 }
