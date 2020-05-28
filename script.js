@@ -43,18 +43,22 @@ const iTetro = [
 const tetrominoes = [lTetro, oTetro, zTetro, iTetro, tTetro]
 
 let currentPosition = 4
-
+let currentRotation = 0 
 
 //random selection tetro
 let random = Math.floor(Math.random() * tetrominoes.length)
 console.log(random)
 
-let current = tetrominoes[0][0]
-//drawing the tretro
+let current = tetrominoes[random][currentRotation]
+//draw the tretro
 function draw() {
   current.forEach(index => {
     squares[currentPosition + index].classList.add('tetromino')
   })
 }
-
-draw()
+//undraw the tetro
+function undraw() {
+  current.forEach(index => {
+    squares[currentPosition + index].classList.add('tetromino')
+  })
+}
