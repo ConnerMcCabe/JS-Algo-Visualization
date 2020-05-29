@@ -1,8 +1,10 @@
-//Tetris is cool
+//Things to do later; 
+//styling, fix preview window (shows two blocks ahead instead of one), make clear and concise html rework
 const width = 10;
 const grid = document.querySelector('.grid')
 const scoreDis = document.querySelector('#score')
 const startBtn = document.querySelector('#start-button')
+const colors = ['orange', 'red', 'purple', 'green', 'blue']
 let squares = Array.from(document.querySelectorAll('.grid div'))
 let nextRandom = 0
 let score = 0
@@ -57,12 +59,14 @@ let current = tetrominoes[random][currentRotation]
 function draw() {
   current.forEach(index => {
     squares[currentPosition + index].classList.add('tetromino')
+    squares[currentPosition + index].style.backgroundColor = colors[random]
   })
 }
 //undraw the tetro
 function undraw() {
   current.forEach(index => {
     squares[currentPosition + index].classList.remove('tetromino')
+    squares[currentPosition + index].style.backgroundColor = ''
   })
 }
 //the falling tetro interval
@@ -84,7 +88,7 @@ document.addEventListener('keyup', control)
 
 function moveDown() {
   undraw()
-  currentPosition = currentPosition += width 
+  currentPosition += width 
   draw()
   freeze()
 }
@@ -99,6 +103,7 @@ function freeze() {
     draw()
     displayShape()
     addScore()
+    gameOver()
   }
 }
 
@@ -148,9 +153,12 @@ const upNext = [
 function displayShape() {
   displaySquares.forEach(square => {
     square.classList.remove('tetromino')
+    square.style.backgroundColor = ''
   })
   upNext[nextRandom].forEach(index => {
     displaySquares[displayIndex + index].classList.add('tetromino')
+    displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
+
   })
 }
 
@@ -175,10 +183,19 @@ function addScore() {
       row.forEach(index => {
         squares[index].classList.remove('taken')
         squares[index].classList.remove('tetromino')
+        squares[index].style.backgroundColor = ''
       })
       const squaresRemoved = squares.splice(i, width)
       squares = squaresRemoved.concat(squares)
       squares.forEach(cell => grid.appendChild(cell))
     }
+  }
+}
+
+//game over
+function gameOver() {
+  if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+    scoreDis.innerHTML = 'GameOver'
+    clearInterval(timerId)
   }
 }
