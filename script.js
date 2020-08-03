@@ -1,8 +1,8 @@
 // CLEARING TETRIS OFF THE BOARD FOR CALCULATOR 
 class Calculator {
-  constructor(previousOperand, currentOperand) {
-    this.previousOperand = previousOperand
-    this.currentOperand = currentOperand
+  constructor(previousOperandElement, currentOperandElement) {
+    this.previousOperandElement = previousOperandElement
+    this.currentOperandElement = currentOperandElement
     this.clear()
   }
 
@@ -32,7 +32,7 @@ class Calculator {
   }
 
   updateDisplay() {
-    this.currentOperand.innerText = this.currentOperand
+    this.currentOperandElement.innerText = this.currentOperand
   }
 
 }
@@ -42,10 +42,10 @@ const operationButtons = document.querySelectorAll('[data-operation]')
 const equalsButton = document.querySelector('[data-equals]')
 const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
-const previousOperand = document.querySelector('[data-previous-operand]')
-const currentOperand = document.querySelector('[data-current-operand]')
+const previousOperandElement = document.querySelector('[data-previous-operand]')
+const currentOperandElement = document.querySelector('[data-current-operand]')
 
-const calculator = new Calculator(previousOperand, currentOperand)
+const calculator = new Calculator(previousOperandElement, currentOperandElement)
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
