@@ -57,9 +57,11 @@ class Calculator {
 
   updateDisplay() {
     this.currentOperandElement.innerText = this.currentOperand
-    this.previousOperandElement.innerText = this.previousOperand
+    if (this.operation != null) {
+      this.previousOperandElement.innerText = 
+        `${this.previousOperand} ${this.operation}`
+    }
   }
-
 }
 
 const numberButtons = document.querySelectorAll('[data-number]')
@@ -91,7 +93,7 @@ equalsButton.addEventListener('click', button => {
   calculator.updateDisplay()
 })
 
-clearButton.addEventListener('click', button => {
+allClearButton.addEventListener('click', button => {
   calculator.clear()
   calculator.updateDisplay()
 })
